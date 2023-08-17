@@ -1,7 +1,6 @@
 #include "main.h"
 	/**
 	 ** main - print _putchar
-	 *@_putchar : main - print _putchar
 	 * is written by Chaymae
 	 * Return: 0
 	 */
