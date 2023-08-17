@@ -1,7 +1,7 @@
 #include "main.h"
 	/**
-	 * main-print _putchar
-	 * is written by mbah
+	 ** main - prints the string "_putchar" from a character array
+	 * is written by Chaymae
 	 * Return: 0
 	 */
 
