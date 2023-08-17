@@ -1,6 +1,6 @@
 #include "main.h"
 	/**
-	 ** main - prints the string "_putchar" from a character array
+	 ** main - print _putchar
 	 * is written by Chaymae
 	 * Return: 0
 	 */
