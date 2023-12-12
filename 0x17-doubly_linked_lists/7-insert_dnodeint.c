@@ -1,48 +1,48 @@
 #include "lists.h"
-#include <stdlib.h>
-#include <stdio.h>
-
 /**
- * insert_dnodeint_at_index - inserts a new node at a given position
- * @h: double pointer to the beginning of the linked list
- * @idx: index at which to insert the new node
- * @n: data to enter into new node
- *
- * Return: pointer to the new node, or NULL on failure
- */
+* insert_dnodeint_at_index - function
+* @h: double pointer to first node of dbl lnkd list
+* @idx: index to where new node is added
+* @n: data of new node
+*
+* Description: function to insert a new node at a given index
+* Return: Address of new node or NULL if fail.
+*/
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *new, *next, *current;
-	unsigned int i;
+	dlistint_t *newNode, *temph = *h;
+	unsigned int toindex = 0;
 
-	if (h == NULL)
+	newNode = malloc(sizeof(dlistint_t));
+	if (newNode == NULL)
 		return (NULL);
-	if (idx != 0)
+	newNode->n = n;
+	if (*h == NULL)
 	{
-		current = *h;
-		for (i = 0; i < idx - 1 && current != NULL; i++)
-			current = current->next;
-		if (current == NULL)
-			return (NULL);
+		newNode->next = NULL;
+		newNode->prev = NULL;
+		*h = newNode;
+		return (newNode);
 	}
-	new = malloc(sizeof(dlistint_t));
-	if (new == NULL)
-		return (NULL);
-	new->n = n;
 	if (idx == 0)
+		return (add_dnodeint(h, n));
+	while (toindex < idx - 1)
 	{
-		next = *h;
-		*h = new;
-		new->prev = NULL;
+		if (temph == NULL)
+			return (NULL);
+		temph = temph->next;
+		toindex++;
 	}
-	else
+	if (temph->next == NULL)
 	{
-		new->prev = current;
-		next = current->next;
-		current->next = new;
+		temph->next = newNode;
+		newNode->prev = temph;
+		newNode->next = NULL;
+		return (newNode);
 	}
-	new->next = next;
-	if (new->next != NULL)
-		new->next->prev = new;
-	return (new);
+	newNode->next = temph->next;
+	temph->next = newNode;
+	newNode->prev = temph;
+	newNode->next->prev = newNode;
+	return (newNode);
 }
