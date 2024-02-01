@@ -1,23 +1,22 @@
+/*
+ * File: 4-free_dlistint.c
+ * Auth: Gedeon Obae Gekonge
+ */
+
 #include "lists.h"
+
 /**
-* free_dlistint - function
-* @head: pointer to first node of dbl lnkd list
-*
-* Decription: function to free a a dbl lnkd list
-* Return: 0 (success)
-*/
+ * free_dlistint - Frees a linked dlistint_t list.
+ * @head: The head of the dlistint_t list.
+ */
 void free_dlistint(dlistint_t *head)
 {
-	dlistint_t *temph = head;
+	dlistint_t *tmp;
 
-	if (head == NULL)
-		return;
-
-	while (head->next != NULL)
+	while (head)
 	{
-		temph = head;
-		head = head->next;
-		free(temph);
+		tmp = head->next;
+		free(head);
+		head = tmp;
 	}
-	free(head);
 }
